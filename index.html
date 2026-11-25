@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#db2777">
+<title>Consanguinité et maladies héréditaires · Résultats de porteur</title>
+<meta name="description" content="Mariage entre proches et maladies héréditaires : comprendre l’effet du lien de parenté, ses résultats de porteur (drépanocytose), les risques pour les enfants et préparer la consultation.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fdf2f8;--card:#fff;--ink:#3b0a24;--mute:#7c5a6e;--line:#f6d3e4;--brand:#db2777;--brand2:#be185d;
+--c-non:#3dbe9a;--c-por:#f2b138;--c-dre:#e8553f;--c-aut:#c4a1f5;--hero1:#831843;--hero2:#be185d;
+--f1:'Bricolage Grotesque',system-ui,sans-serif;--f2:'Figtree',system-ui,sans-serif}
+@media(prefers-color-scheme:dark){:root{--bg:#1d0a15;--card:#2b1020;--ink:#fdeaf4;--mute:#d0a3bc;--line:#4a2038}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--f2);padding-top:env(safe-area-inset-top)}
+h1,h2,h3{font-family:var(--f1);line-height:1.1;margin:0}
+.hero{background:radial-gradient(900px 400px at 85% -10%,#f472b6 0,transparent 60%),linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;padding:28px 20px 70px;position:relative;overflow:hidden}
+.wrap{max-width:860px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:34px}
+.lang{display:flex;background:rgba(255,255,255,.14);border-radius:99px;padding:3px}
+.lang button{border:0;background:none;color:#fff;font:600 14px var(--f2);padding:6px 14px;border-radius:99px;cursor:pointer}
+.lang button[aria-pressed=true]{background:#fff;color:var(--hero1)}
+.hero h1{font-size:clamp(2.2rem,6.5vw,3.9rem);font-weight:800;max-width:15ch;letter-spacing:-.02em}
+.hero p{max-width:52ch;opacity:.88;margin:16px 0 0;font-size:1.08rem}
+.cells{position:absolute;right:-20px;top:70px;width:min(46vw,380px);opacity:.95;pointer-events:none}
+@media(max-width:640px){.cells{opacity:.28;top:90px}}
+main{margin-top:-44px;position:relative;padding:0 16px 60px}
+.tabs{display:flex;gap:6px;background:var(--card);padding:6px;border-radius:18px;box-shadow:0 10px 30px rgba(131,24,67,.14);overflow-x:auto;scrollbar-width:none}
+.tabs button{flex:1;min-width:max-content;border:0;background:none;color:var(--mute);font:600 15px var(--f2);padding:11px 16px;border-radius:13px;cursor:pointer;transition:.2s}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--bg)}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--brand2);outline-offset:2px}
+section{display:none;margin-top:22px}section.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;margin-bottom:18px}
+.card h2{font-size:1.6rem;margin-bottom:6px}.card h3{font-size:1.2rem;margin:22px 0 8px}
+.mute{color:var(--mute);font-size:.94rem}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+@media(max-width:560px){.pair{grid-template-columns:1fr}}
+label{font-weight:600;font-size:.92rem;display:block;margin-bottom:6px}
+select{width:100%;padding:13px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:500 16px var(--f2)}
+.empty{border:2px dashed var(--line);border-radius:18px;padding:22px;text-align:center;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.chip{border-radius:16px;padding:12px 16px;color:#1b1030;font-weight:600;min-width:130px}
+.chip b{font:800 1.9rem var(--f1);display:block;line-height:1}
+.dots{display:flex;flex-wrap:wrap;gap:7px;max-width:400px;margin:10px 0}
+.dot{width:28px;height:28px;border-radius:50%}.dot.s{border-radius:60% 40% 55% 45%/50% 60% 40% 50%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.9rem}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+table.p{border-collapse:separate;border-spacing:6px;width:100%;text-align:center;max-width:420px}
+table.p td{border-radius:14px;padding:12px 6px;color:#1b1030;font-weight:700}
+table.p td small{display:block;font-weight:500;font-size:.72rem}
+table.p th{font-family:var(--f1);font-size:1.1rem}
+.cNP{background:#bdeedd}.cPO{background:#fbe2a6}.cDR{background:#ffc3b5}.cAU{background:#d8cdfa}.cUN{background:#e3e0ea}
+.note{background:color-mix(in srgb,var(--brand2) 10%,var(--card));border-left:4px solid var(--brand2);border-radius:12px;padding:12px 16px;margin:14px 0;font-size:.95rem}
+.warn{background:color-mix(in srgb,var(--c-por) 18%,var(--card));border-left-color:var(--c-por)}
+.ok{background:color-mix(in srgb,var(--c-non) 16%,var(--card));border-left-color:var(--c-non)}
+ul{padding-left:20px;margin:8px 0}li{margin:5px 0}
+.btn{display:inline-block;border:0;background:var(--brand);color:#fff;font:700 15px var(--f2);padding:13px 22px;border-radius:14px;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.alt{background:var(--ink);color:var(--bg)}
+input[type=range]{width:100%;accent-color:var(--brand)}
+.big{font:800 3.2rem var(--f1);color:var(--brand)}
+.bars{display:flex;align-items:flex-end;gap:12px;height:190px;margin:14px 0 4px}
+.bar{flex:1;background:linear-gradient(#f472b6,var(--brand));border-radius:12px 12px 4px 4px;position:relative;min-height:4px;opacity:.35;transition:.3s}
+.bar.on{opacity:1}.bar span{position:absolute;top:-24px;left:0;right:0;text-align:center;font-weight:700;font-size:.85rem}
+.bl{display:flex;gap:12px;text-align:center;font-size:.85rem;color:var(--mute)}.bl div{flex:1}
+.tl{list-style:none;padding:0;border-left:3px solid var(--line);margin:14px 0 0 10px}
+.tl li{position:relative;padding:0 0 18px 24px}
+.tl li:before{content:"";position:absolute;left:-10px;top:5px;width:17px;height:17px;border-radius:50%;background:var(--brand2);border:3px solid var(--card)}
+.tl b{display:block}
+.prog{height:8px;background:var(--line);border-radius:9px;overflow:hidden;margin:12px 0 4px}.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--brand2),var(--brand));transition:.4s}
+details{border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin:12px 0}summary{cursor:pointer;font-weight:600}
+.q{margin:14px 0}.q label{font-weight:600}.q div.o{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.o label{font-weight:400;display:flex;gap:10px;padding:9px 12px;border:1.5px solid var(--line);border-radius:12px;cursor:pointer;margin:0}
+svg text{font-family:var(--f2)}
+footer{text-align:center;color:var(--mute);font-size:.85rem;margin-top:30px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media print{.hero,.tabs,.btn{display:none}}
+.kin{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}@media(max-width:560px){.kin{grid-template-columns:1fr}}
+.kin .chip{min-width:0}.kin small{display:block;font-weight:500;font-size:.78rem;margin-top:4px}
+
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:20;border:0;background:var(--brand);color:#fff;font:700 15px var(--f2);padding:14px 20px;border-radius:99px;box-shadow:0 10px 28px rgba(219,39,119,.45);cursor:pointer}
+.panel{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:calc(max(16px,env(safe-area-inset-bottom)) + 62px);z-index:21;width:min(400px,calc(100vw - 32px));height:min(560px,calc(100dvh - 120px));background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:0 20px 60px rgba(131,24,67,.35);display:flex;flex-direction:column;overflow:hidden}
+.panel[hidden]{display:none}
+.ph{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ph b{font:700 1.05rem var(--f1)}.ph small{display:block;opacity:.8;font-size:.78rem}
+.ph button{border:0;background:rgba(255,255,255,.16);color:#fff;border-radius:50%;width:32px;height:32px;font-size:16px;cursor:pointer}
+#am{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:88%;padding:10px 14px;border-radius:16px;font-size:.94rem;line-height:1.5;white-space:pre-wrap}
+.msg.u{align-self:flex-end;background:var(--brand2);color:#fff;border-bottom-right-radius:4px}
+.msg.b{align-self:flex-start;background:color-mix(in srgb,var(--brand2) 10%,var(--card));border-bottom-left-radius:4px}
+.msg.b.urg{background:color-mix(in srgb,var(--c-dre) 22%,var(--card))}
+.sg{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 8px}
+.sg button{border:1.5px solid var(--line);background:none;color:var(--ink);font:500 13px var(--f2);padding:7px 12px;border-radius:99px;cursor:pointer}
+#af{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--line)}
+#af input{flex:1;min-width:0;padding:11px 14px;border-radius:99px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:400 16px var(--f2)}
+#af button{border:0;background:var(--brand);color:#fff;border-radius:99px;padding:0 18px;font:700 14px var(--f2);cursor:pointer}
+.pd{font-size:.72rem;color:var(--mute);text-align:center;padding:0 12px 8px}
+@media print{.fab,.panel{display:none}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <svg class="cells" viewBox="0 0 300 300" aria-hidden="true">
+    <g fill="#f9a8d4"><circle cx="90" cy="90" r="46"/><circle cx="215" cy="70" r="30" opacity=".8"/><circle cx="170" cy="190" r="52" opacity=".95"/><circle cx="60" cy="220" r="26" opacity=".7"/></g>
+    <g fill="#831843" opacity=".35"><circle cx="90" cy="90" r="18"/><circle cx="170" cy="190" r="21"/><circle cx="215" cy="70" r="12"/></g>
+    <path d="M232 170c28 20 40 52 30 92 22-26 22-70-4-100z" fill="#f2b138"/><path d="M30 130c-20 22-24 50-12 82-18-24-12-62 8-84z" fill="#f2b138" opacity=".9"/>
+  </svg>
+  <div class="wrap">
+    <div class="top"><b style="font-family:var(--f1);font-size:1.15rem">🧬 <span data-t="brand"></span></b>
+      <div class="lang" role="group" aria-label="Langue"><button data-l="fr" aria-pressed="true">FR</button><button data-l="en" aria-pressed="false">EN</button></div></div>
+    <h1 data-t="h1"></h1>
+    <p data-t="sub"></p>
+  </div>
+</header>
+<main><div class="wrap">
+  <div class="tabs" role="tablist" id="tabs"></div>
+
+  <section id="s0" class="on">
+    <div class="card">
+      <h2 data-t="resT"></h2><p class="mute" data-t="resH"></p>
+      <div class="pair">
+        <div><label for="g1" data-t="pa"></label><select id="g1"></select></div>
+        <div><label for="g2" data-t="pb"></label><select id="g2"></select></div>
+      </div>
+      <div style="margin-top:14px"><label for="rel" data-t="relL"></label><select id="rel"></select></div>
+      <div class="prog" aria-hidden="true"><i id="pg" style="width:0"></i></div><div class="mute" data-t="journey"></div>
+    </div>
+    <div id="kin"></div>
+    <div id="expl"></div>
+  </section>
+
+  <section id="s1"><div class="card" id="fam"></div></section>
+  <section id="s2"><div class="card" id="cal"></div></section>
+  <section id="s3"><div class="card" id="next"></div></section>
+
+  <footer data-t="foot"></footer>
+</div></main>
+
+<button class="fab" id="ab" aria-expanded="false" aria-controls="ap"></button>
+<div class="panel" id="ap" role="dialog" aria-modal="false" hidden>
+  <div class="ph"><div><b id="at"></b><small id="amd"></small></div><button id="ax" aria-label="Fermer">✕</button></div>
+  <div id="am" aria-live="polite"></div><div class="sg" id="as"></div>
+  <form id="af" autocomplete="off"><input id="aq" maxlength="400" aria-label="Question"><button id="asn"></button></form>
+  <div class="pd" id="apd"></div>
+</div>
+<script>
+const GEN=['AA','AS','AC','AT','SS','SC','ST','CC','CT','TT'],CATS=['non','por','dre','aut'];
+const disp=g=>g.replace('T','β'),CL={non:'cNP',por:'cPO',dre:'cDR',aut:'cAU'},CV={non:'--c-non',por:'--c-por',dre:'--c-dre',aut:'--c-aut'};
+function cat(g){const a=g.split('');if(!a.includes('S')){if(g==='AA')return'non';return a.includes('A')?'por':'aut'}return a.includes('A')?'por':'dre'}
+function probs(x,y){const p={non:0,por:0,dre:0,aut:0};for(const a of x)for(const b of y)p[cat(a+b)]+=.25;return p}
+const counsel=(x,y)=>{const p=probs(x,y);return p.dre>0||p.aut>0};
+const serie=(x,y,n=5)=>{const p=probs(x,y).dre;return Array.from({length:n},(_,i)=>1-Math.pow(1-p,i+1))};
+
+const T={fr:{brand:'Résultats de porteur',h1:'Mariage entre proches : comprendre les risques héréditaires.',sub:'Indiquez le lien de parenté du couple et les résultats de porteur : l’outil explique en mots simples ce que cela change pour la santé des enfants (ici avec la drépanocytose), sans jugement, et prépare votre rendez-vous.',
+tabs:['Résultats','Famille','Calendrier','Suite'],resT:'Vos résultats',resH:'Indiquez le génotype de chaque partenaire (ex. AS). Pas de résultat ? Laissez « inconnu ».',pa:'Partenaire A',pb:'Partenaire B',journey:'Votre parcours',unk:'Résultat inconnu',relL:'Lien de parenté du couple (facultatif)',rel:['Je ne sais pas / je préfère ne pas dire','Non apparentés','Cousins germains (grands-parents communs)','Cousins issus de germains (arrière-grands-parents communs)','Oncle et nièce, ou tante et neveu','Doubles cousins germains'],relS:['','non apparentés','cousins germains','cousins issus de germains','oncle-nièce / tante-neveu','doubles cousins germains'],
+kinT:'Pourquoi le lien de parenté compte',kinI:'Dans beaucoup de familles et de communautés, on se marie entre proches. Ce n’est ni une faute ni un tabou : cela change simplement la façon de comprendre les risques héréditaires.',kinNo:'Indiquez ci-dessus le lien de parenté du couple, si vous le souhaitez, pour voir ce que cela change.',
+kinWhy:'Deux personnes apparentées ont reçu une partie de leurs gènes des mêmes ancêtres. Si l’une porte une variante rare d’un gène, l’autre a donc plus de chances de porter la même. Un enfant qui reçoit cette variante de chacun peut alors développer la maladie.',kinShare:r=>`Pour ce lien de parenté, le couple partage en moyenne environ ${pp(r)} de ses gènes par ses ancêtres communs.`,
+kinQ:'Si l’un des deux porte une variante d’un gène de maladie héréditaire, risque d’enfant atteint à chaque grossesse :',kinC:'Maladie fréquente (comme la drépanocytose : environ 1 personne sur 5 est porteuse)',kinR:'Maladie rare (environ 1 personne sur 100 est porteuse)',kinU:'Couple non apparenté',kinY:'Votre couple',
+kinLim:'Estimation simplifiée pour comprendre le principe, pas une prévision pour votre famille. Elle ne remplace ni un test ni l’avis d’un conseiller en génétique.',
+kinKnown:'Vos résultats saisis concernent la drépanocytose : le risque calculé plus bas reste valable. Le lien de parenté compte surtout pour les autres maladies héréditaires, qui ne sont pas visibles dans ces résultats.',
+kinSteps:'Ce que le couple peut faire',kinList:['Demander un dépistage élargi des porteurs (plusieurs maladies héréditaires, pas seulement la drépanocytose).','Rassembler l’histoire de la famille : enfants décédés jeunes, maladies connues, handicaps, mariages entre proches.','En parler avant une grossesse avec un conseiller en génétique ou un médecin.'],kinNoRec:'Cet outil ne recommande aucun choix familial et ne juge personne : la décision vous appartient.',
+famK:'Quand le couple est apparenté, les ancêtres communs (par exemple un grand-parent) sont la source du partage de gènes. Si vous connaissez leur statut, notez-le pour la consultation.',
+geno:{non:'non porteur',por:'porteur',dre:'forme drépanocytaire',aut:'autre combinaison'},
+cs:{non:'Enfant non porteur',por:'Enfant porteur (sans la maladie)',dre:'Enfant avec une forme de drépanocytose',aut:'Autre combinaison : à voir avec un spécialiste'},
+needBoth:'Indiquez d’abord le résultat des deux partenaires.',
+each:'À chaque grossesse, le risque estimé est :',punT:'Comment c’est calculé',punC:'Chaque parent transmet l’un de ses deux gènes, au hasard.',dotsT:'Pour 20 grossesses, la répartition attendue serait :',dotsN:'Une illustration pour comprendre un risque, pas une prévision pour votre famille.',
+keyT:'À retenir',keys:['Le risque est le même à chaque grossesse.','Un risque n’est pas une certitude.','Un conseiller en génétique ou un spécialiste peut interpréter votre situation.'],
+listen:'🔊 Écouter',stop:'⏹ Arrêter',aiT:'Explication en mots simples',aiQ:'Questions à poser au médecin',
+exTxt:(d)=>`Pour chaque grossesse, les risques estimés sont : ${d}. Seul un conseiller en génétique ou un spécialiste peut interpréter votre situation.`,exQ:['Quelles sont nos options et où faire les tests ?'],
+famT:'Arbre généalogique',famI:'Ajoutez, si vous les connaissez, les statuts des parents. Aucun nom : seulement des rôles.',roles:['Mère de A','Père de A','Mère de B','Père de B'],unkTree:'statut inconnu',child:'Enfant possible',
+famU:w=>`Statut inconnu pour : ${w}. Un test peut être utile ; un professionnel de santé peut vous conseiller.`,
+calT:'Le risque au fil des grossesses',calI:'Le risque de chaque grossesse reste le même, mais la probabilité d’avoir au moins un enfant avec une forme drépanocytaire augmente avec leur nombre.',calS:'Grossesses envisagées',calM:'Au moins un enfant avec une forme drépanocytaire',calNone:'Pour cette combinaison, aucun risque d’enfant avec une forme drépanocytaire n’est calculé.',calInd:'Chaque grossesse est un nouveau tirage : avoir eu un enfant non atteint ne change pas le risque de la suivante.',
+road:'Votre feuille de route',tl:[['Avant la grossesse','Faire le point sur le statut de chacun et des proches, et en parler avec un professionnel de santé.'],['Conseil génétique','Un conseiller en génétique ou un hématologue interprète votre situation et répond à vos questions.'],['Options à discuter','Selon les pays et centres, des options existent avant ou pendant la grossesse. À vérifier avec un spécialiste : cet outil ne recommande aucun choix.'],['Pendant et après','Un suivi médical adapté et un dépistage du nouveau-né peuvent être proposés.']],
+nextT:'Et maintenant ?',cYes:'Un conseil génétique est recommandé pour ce couple.',cNo:'Aucun risque d’enfant atteint n’est calculé, mais un conseil reste possible.',
+who:'Avec qui en parler ?',whoB:'Un conseiller en génétique ou un hématologue. Sinon, votre médecin traitant ou le service de santé de votre région peut vous orienter.',qs:['Quel est le risque exact pour notre couple, d’après nos résultats ?','Faut-il tester d’autres membres de la famille ?','Notre lien de parenté justifie-t-il un dépistage plus large, sur d’autres maladies héréditaires ?','Quelles options existent avant et pendant une grossesse, et où ?','Quel suivi est conseillé pour un enfant porteur ou atteint ?','Où pouvons-nous faire confirmer nos résultats ?'],qT:'Questions utiles à poser',dir:'Pour chercher des centres d’expertise : annuaire Orphanet (orpha.net). Vérifiez toujours les coordonnées.',
+fT:'Fiche à apporter à la consultation',fI:'Un résumé sans nom ni identifiant, à imprimer ou montrer au professionnel de santé.',fB:'📄 Télécharger la fiche (PDF)',
+quizT:'Testez-vous',quiz:[['Un parent porteur (AS) est-il malade ?',['Oui, toujours','Non, en général il est porteur sans la maladie'],1],['Si les deux parents sont AS, le risque d’enfant SS est de :',['25 % à chaque grossesse','100 %'],0],['Après un enfant non atteint, le risque du suivant :',['diminue','reste le même'],1],['Quand un couple est apparenté, qu’est-ce qui augmente surtout ?',['La chance de porter la même variante rare d’un gène','La certitude d’avoir un enfant malade'],0]],quizB:'Vérifier',quizR:s=>`Score : ${s}/4`,
+disc:'Cet outil informe : il ne pose aucun diagnostic et ne remplace pas un conseil génétique.',foot:'Cet outil informe, il ne remplace pas un conseil génétique. Aucune donnée n’est envoyée ni enregistrée.',
+fiche:{title:'FICHE À APPORTER À LA CONSULTATION',meta:'Aucun nom ni identifiant. Générée le ',kin:'Lien de parenté du couple',kinN:'Un dépistage élargi des porteurs (autres maladies héréditaires) peut être utile : à discuter avec un conseiller en génétique.',res:'Résultats saisis',fam:'Proches (statuts saisis)',risk:'Risque estimé pour chaque grossesse',multi:'Probabilité d’avoir au moins un enfant avec une forme drépanocytaire',preg:'grossesse(s)',qs:'Questions à poser au professionnel de santé',unk:'statut inconnu'}},
+en:{brand:'Carrier results',h1:'Marriage between relatives: understand inherited risks.',sub:'Enter the couple’s family relationship and carrier results: the tool explains in plain words what this changes for children’s health (here with sickle cell disease), without judgement, and prepares your appointment.',
+tabs:['Results','Family','Calendar','Next'],resT:'Your results',resH:'Enter each partner’s genotype (e.g. AS). No result? Leave “unknown”.',pa:'Partner A',pb:'Partner B',journey:'Your journey',unk:'Result unknown',relL:'How the couple is related (optional)',rel:['I don’t know / prefer not to say','Not related','First cousins (shared grandparents)','Second cousins (shared great-grandparents)','Uncle and niece, or aunt and nephew','Double first cousins'],relS:['','not related','first cousins','second cousins','uncle-niece / aunt-nephew','double first cousins'],
+kinT:'Why being related matters',kinI:'In many families and communities, people marry relatives. It is neither a fault nor a taboo: it simply changes how inherited risks are understood.',kinNo:'Choose above how the couple is related, if you wish, to see what it changes.',
+kinWhy:'Two related people received part of their genes from the same ancestors. If one carries a rare gene variant, the other is therefore more likely to carry the same one. A child who receives that variant from both can then develop the disease.',kinShare:r=>`For this relationship, the couple shares on average about ${pp(r)} of their genes through common ancestors.`,
+kinQ:'If one partner carries a variant of an inherited-disease gene, the risk of an affected child at each pregnancy is:',kinC:'Common condition (like sickle cell: about 1 person in 5 is a carrier)',kinR:'Rare condition (about 1 person in 100 is a carrier)',kinU:'Unrelated couple',kinY:'Your couple',
+kinLim:'A simplified estimate to explain the principle, not a forecast for your family. It does not replace a test or a genetic counsellor’s advice.',
+kinKnown:'Your entered results concern sickle cell disease: the risk calculated below still holds. Being related matters mostly for other inherited conditions, which these results do not show.',
+kinSteps:'What the couple can do',kinList:['Ask for extended carrier screening (several inherited conditions, not only sickle cell).','Gather the family history: children who died young, known conditions, disabilities, marriages between relatives.','Discuss it before a pregnancy with a genetic counsellor or a doctor.'],kinNoRec:'This tool recommends no family choice and judges no one: the decision is yours.',
+famK:'When the couple is related, the common ancestors (for example a grandparent) are the source of shared genes. If you know their status, note it for the consultation.',
+geno:{non:'not a carrier',por:'carrier',dre:'sickle cell form',aut:'other combination'},
+cs:{non:'Child not a carrier',por:'Child who is a carrier (without the disease)',dre:'Child with a form of sickle cell disease',aut:'Other combination: to review with a specialist'},
+needBoth:'First enter both partners’ results.',
+each:'For each pregnancy, the estimated risk is:',punT:'How it is calculated',punC:'Each parent passes on one of their two genes, at random.',dotsT:'For 20 pregnancies, the expected split would be:',dotsN:'An illustration to understand a risk, not a forecast for your family.',
+keyT:'Key points',keys:['The risk is the same at every pregnancy.','A risk is not a certainty.','A genetic counsellor or a specialist can interpret your situation.'],
+listen:'🔊 Listen',stop:'⏹ Stop',aiT:'Explanation in plain words',aiQ:'Questions for your doctor',
+exTxt:(d)=>`For each pregnancy, the estimated risks are: ${d}. Only a genetic counsellor or a specialist can interpret your situation.`,exQ:['What are our options and where can we get tested?'],
+famT:'Family tree',famI:'Add, if you know them, the parents’ statuses. No names: roles only.',roles:['Mother of A','Father of A','Mother of B','Father of B'],unkTree:'status unknown',child:'Possible child',
+famU:w=>`Status unknown for: ${w}. Testing may be useful; a health professional can advise.`,
+calT:'Risk over several pregnancies',calI:'The risk of each pregnancy stays the same, but the chance of at least one child with a sickle cell form grows with their number.',calS:'Pregnancies considered',calM:'At least one child with a sickle cell form',calNone:'For this combination, no risk of a child with a sickle cell form is calculated.',calInd:'Each pregnancy is a new draw: having an unaffected child does not change the risk of the next one.',
+road:'Your roadmap',tl:[['Before pregnancy','Take stock of everyone’s status, including relatives, and talk to a health professional.'],['Genetic counselling','A genetic counsellor or haematologist interprets your situation and answers your questions.'],['Options to discuss','Depending on country and centre, options exist before or during pregnancy. Check with a specialist: this tool recommends no choice.'],['During and after','Suitable follow-up and newborn screening may be offered.']],
+nextT:'What now?',cYes:'Genetic counselling is recommended for this couple.',cNo:'No risk of an affected child is calculated, but counselling remains possible.',
+who:'Who to talk to',whoB:'A genetic counsellor or a haematologist. Otherwise your family doctor or local health service can refer you.',qs:['What is the exact risk for our couple, based on our results?','Should other family members be tested?','Does our family relationship justify wider screening for other inherited conditions?','What options exist before and during a pregnancy, and where?','What follow-up is advised for a child who is a carrier or affected?','Where can we get our results confirmed?'],qT:'Useful questions to ask',dir:'To find expert centres: Orphanet directory (orpha.net). Always check contact details.',
+fT:'Sheet to bring to your consultation',fI:'A summary with no name or identifier, to print or show to the health professional.',fB:'📄 Download the sheet (PDF)',
+quizT:'Test yourself',quiz:[['Is a carrier parent (AS) ill?',['Yes, always','No, usually a carrier without the disease'],1],['If both parents are AS, the risk of an SS child is:',['25% each pregnancy','100%'],0],['After an unaffected child, the next one’s risk:',['goes down','stays the same'],1],['When a couple is related, what mainly goes up?',['The chance of carrying the same rare gene variant','The certainty of having an ill child'],0]],quizB:'Check',quizR:s=>`Score: ${s}/4`,
+disc:'This tool informs: it makes no diagnosis and does not replace genetic counselling.',foot:'This tool informs; it does not replace genetic counselling. No data is sent or saved.',
+fiche:{title:'SHEET TO BRING TO YOUR CONSULTATION',meta:'No name or identifier. Generated on ',kin:'How the couple is related',kinN:'Extended carrier screening (other inherited conditions) may be useful: to discuss with a genetic counsellor.',res:'Results entered',fam:'Relatives (statuses entered)',risk:'Estimated risk for each pregnancy',multi:'Chance of at least one child with a sickle cell form',preg:'pregnancy(ies)',qs:'Questions to ask the health professional',unk:'status unknown'}}};
+
+let L='fr',S={g1:'?',g2:'?',rel:'?',par:['?','?','?','?'],n:3,quiz:null};
+const REL={none:[0,0],c1:[1/8,1/16],c2:[1/32,1/64],un:[1/4,1/8],dc1:[1/4,1/8]},RELK=['?','none','c1','c2','un','dc1'];
+/* r = part de gènes partagée par les ancêtres communs ; si l’un porte une variante, l’autre la porte avec la probabilité r + (1 − r) × c (c = fréquence des porteurs) ; risque d’enfant atteint = ce nombre / 4 */
+const kinRisk=(r,c)=>(r+(1-r)*c)/4,CFREQ=.2,CRARE=.01;
+const pp=v=>{const x=v*100,n=(x<1?x.toFixed(2):x<20?x.toFixed(1):String(Math.round(x))).replace(/\.0$/,'');return (L==='fr'?n.replace('.',','):n)+' %'};
+const $=s=>document.querySelector(s),t=()=>T[L];
+const opts=sel=>`<option value="?">${t().unk}</option>`+GEN.map(g=>`<option value="${g}"${g===sel?' selected':''}>${disp(g)} · ${t().geno[cat(g)]}</option>`).join('');
+const pct=v=>Math.round(v*100);
+const both=()=>S.g1!=='?'&&S.g2!=='?';
+const need=()=>`<div class="empty">${t().needBoth}</div>`;
+
+function render(){
+  speechSynthesis.cancel();
+  document.documentElement.lang=L;
+  document.querySelectorAll('[data-t]').forEach(e=>e.textContent=t()[e.dataset.t]);
+  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===L));
+  $('#g1').innerHTML=opts(S.g1);$('#g2').innerHTML=opts(S.g2);$('#rel').innerHTML=t().rel.map((x,i)=>`<option value="${RELK[i]}"${RELK[i]===S.rel?' selected':''}>${x}</option>`).join('');
+  const act=document.querySelector('.tabs [aria-selected=true]'),cur=act?+act.dataset.i:0;
+  $('#tabs').innerHTML=t().tabs.map((x,i)=>`<button role="tab" data-i="${i}" aria-selected="${i===cur}">${x}</button>`).join('');
+  $('#pg').style.width=((both()?1:0)+(S.quiz!==null?1:0)+(S.fiche?1:0))/3*100+'%';
+  kin();expl();fam();cal();nxt();ui();
+}
+
+function kin(){
+  const e=$('#kin'),k=REL[S.rel];let h=`<div class="card"><h2>${t().kinT}</h2><p class="mute">${t().kinI}</p>`;
+  if(!k){e.innerHTML=h+`<div class="empty">${t().kinNo}</div></div>`;return}
+  const [r]=k,u=c=>kinRisk(0,c),y=c=>kinRisk(r,c),ch=(v,l,bg)=>`<div class="chip" style="background:var(${bg})"><b>${pp(v)}</b><small>${l}</small></div>`;
+  h+=`<p>${t().kinWhy}</p>`;
+  if(r>0)h+=`<div class="note">${t().kinShare(r)}</div>`;
+  h+=`<h3>${t().kinQ}</h3><p class="mute">${t().kinC}</p><div class="kin">${ch(u(CFREQ),t().kinU,'--c-non')}${ch(y(CFREQ),t().kinY+' · '+t().relS[RELK.indexOf(S.rel)],'--c-por')}</div>
+  <p class="mute">${t().kinR}</p><div class="kin">${ch(u(CRARE),t().kinU,'--c-non')}${ch(y(CRARE),t().kinY+' · '+t().relS[RELK.indexOf(S.rel)],'--c-por')}</div>
+  <p class="mute">${t().kinLim}</p>`;
+  if(both())h+=`<div class="note ok">${t().kinKnown}</div>`;
+  if(r>0)h+=`<h3>${t().kinSteps}</h3><ul>${t().kinList.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+  e.innerHTML=h+`<p class="mute">${t().kinNoRec}</p></div>`;
+}
+
+function expl(){
+  const e=$('#expl');if(!both()){e.innerHTML=`<div class="card">${need()}</div>`;return}
+  const p=probs(S.g1,S.g2),a=S.g1.split(''),b=S.g2.split('');
+  const chips=CATS.filter(c=>p[c]>0).map(c=>`<div class="chip" style="background:var(${CV[c]})"><b>${pct(p[c])} %</b>${t().cs[c]}</div>`).join('');
+  let dots='';CATS.forEach(c=>{for(let i=0;i<Math.round(p[c]*20);i++)dots+=`<div class="dot${c==='dre'?' s':''}" style="background:var(${CV[c]})"></div>`});
+  const leg=CATS.filter(c=>p[c]>0).map(c=>`<span><i style="background:var(${CV[c]})"></i>${t().cs[c]}</span>`).join('');
+  const grid=`<table class="p"><tr><th></th>${b.map(x=>`<th>${disp(x)}</th>`).join('')}</tr>${a.map(x=>`<tr><th>${disp(x)}</th>${b.map(y=>{const c=cat(x+y);return`<td class="${CL[c]}">${disp(x+y)}<small>${t().geno[c]}</small></td>`}).join('')}</tr>`).join('')}</table>`;
+  const detail=CATS.filter(c=>p[c]>0).map(c=>`${t().cs[c].toLowerCase()} : ${pct(p[c])} %`).join(', ');
+  const exQ=t().exQ;
+  e.innerHTML=`<div class="card"><h2>${t().each}</h2><div class="chips">${chips}</div>
+  <h3>${t().dotsT}</h3><div class="dots">${dots}</div><div class="legend">${leg}</div><p class="mute">${t().dotsN}</p>
+  <h3>${t().punT}</h3><p class="mute">${t().punC}</p>${grid}</div>
+  <div class="card"><h2>${t().aiT}</h2><p>${t().exTxt(detail)}</p><ul>${t().keys.map(k=>`<li>${k}</li>`).join('')}</ul>
+  <h3>${t().aiQ}</h3><ul>${exQ.map(q=>`<li>${q}</li>`).join('')}</ul><button class="btn alt" id="spk">${t().listen}</button> <button class="btn" id="stp">${t().stop}</button></div>`;
+  $('#spk').onclick=()=>{const u=new SpeechSynthesisUtterance(t().exTxt(detail)+' '+t().keys.join(' '));u.lang=L==='fr'?'fr-FR':'en-US';speechSynthesis.cancel();speechSynthesis.speak(u)};
+  $('#stp').onclick=()=>speechSynthesis.cancel();
+}
+
+function box(x,y,w,h,title,sub,c){return`<g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="14" class="${c}"/><text x="${x+w/2}" y="${y+22}" text-anchor="middle" font-size="12" fill="#1b1030" font-weight="700">${title}</text><text x="${x+w/2}" y="${y+h-14}" text-anchor="middle" font-size="12" fill="#1b1030">${sub}</text></g>`}
+function fam(){
+  const e=$('#fam');let h=`<h2>${t().famT}</h2><p class="mute">${t().famI}</p>`;
+  if(!both()){e.innerHTML=h+need();return}
+  h+=`<div class="pair">`+t().roles.map((r,i)=>`<div><label for="p${i}">${r}</label><select id="p${i}" data-p="${i}">${opts(S.par[i])}</select></div>`).join('')+`</div>`;
+  const pos=[[10,160],[180,160],[372,160],[542,160]];let s='<svg viewBox="0 0 700 360" width="100%" role="img" aria-label="'+t().famT+'"><style>.cNP{fill:#bdeedd}.cPO{fill:#fbe2a6}.cDR{fill:#ffc3b5}.cAU{fill:#d8cdfa}.cUN{fill:#e3e0ea}</style><g stroke="#9a90b3" stroke-width="2" fill="none"><path d="M85 72V108H185V120M255 72V108H185"/><path d="M457 72V108H525V120M627 72V108H525"/></g>';
+  s='<svg viewBox="0 0 700 360" width="100%" role="img" aria-label="'+t().famT+'"><style>.cNP{fill:#bdeedd}.cPO{fill:#fbe2a6}.cDR{fill:#ffc3b5}.cAU{fill:#d8cdfa}.cUN{fill:#e3e0ea}</style><g stroke="#9a90b3" stroke-width="2" fill="none"><path d="M85 76V98H175V118"/><path d="M265 76V98H175V118"/><path d="M457 76V98H525V118"/><path d="M627 76V98H525V118"/><path d="M270 168H430" stroke-dasharray="5 4"/><path d="M350 168V200"/></g>';
+  S.par.forEach((g,i)=>{const x=[10,180,372,542][i];s+=box(x,6,150,70,t().roles[i],g==='?'?t().unkTree:disp(g)+' · '+t().geno[cat(g)],g==='?'?'cUN':CL[cat(g)])});
+  s+=box(100,118,150,56,t().pa,disp(S.g1)+' · '+t().geno[cat(S.g1)],CL[cat(S.g1)])+box(450,118,150,56,t().pb,disp(S.g2)+' · '+t().geno[cat(S.g2)],CL[cat(S.g2)]);
+  const p=probs(S.g1,S.g2),cs=CATS.filter(c=>p[c]>0),w=150,gap=14,tw=cs.length*w+(cs.length-1)*gap,x0=350-tw/2;
+  cs.forEach((c,i)=>{const x=x0+i*(w+gap);s+=`<path d="M350 200H${x+w/2}V250" stroke="#9a90b3" stroke-width="2" fill="none"/>`+box(x,250,w,70,t().child,t().geno[c]+' · '+pct(p[c])+' %',CL[c])});
+  s+='</svg>';
+  const miss=S.par.map((g,i)=>g==='?'?t().roles[i]:null).filter(Boolean);
+  e.innerHTML=h+s+(miss.length?`<div class="note warn">${t().famU(miss.join(', '))}</div>`:'')+(REL[S.rel]&&REL[S.rel][0]>0?`<div class="note">${t().famK}</div>`:'');
+  e.querySelectorAll('[data-p]').forEach(sel=>sel.onchange=()=>{S.par[+sel.dataset.p]=sel.value;fam()});
+}
+
+function cal(){
+  const e=$('#cal');let h=`<h2>${t().calT}</h2><p class="mute">${t().calI}</p>`;
+  if(!both()){e.innerHTML=h+need();return}
+  const sr=serie(S.g1,S.g2);
+  if(sr[0]===0)h+=`<div class="note ok">${t().calNone}</div>`;
+  else h+=`<label for="rg" style="margin-top:14px">${t().calS} : <b id="nv">${S.n}</b></label><input id="rg" type="range" min="1" max="5" value="${S.n}">
+  <div class="mute">${t().calM}</div><div class="big" id="bv">${pct(sr[S.n-1])} %</div>
+  <div class="bars">${sr.map((v,i)=>`<div class="bar${i<S.n?' on':''}" style="height:${v*100}%"><span>${pct(v)}%</span></div>`).join('')}</div><div class="bl">${sr.map((_,i)=>`<div>${i+1}</div>`).join('')}</div>`;
+  h+=`<p class="mute">${t().calInd}</p><h3>${t().road}</h3><ol class="tl">${t().tl.map(x=>`<li><b>${x[0]}</b>${x[1]}</li>`).join('')}</ol>`;
+  e.innerHTML=h;const r=$('#rg');if(r)r.oninput=()=>{S.n=+r.value;$('#nv').textContent=S.n;$('#bv').textContent=pct(sr[S.n-1])+' %';document.querySelectorAll('.bar').forEach((b,i)=>b.classList.toggle('on',i<S.n))};
+}
+
+function pdfFile(title,meta,blocks,bet){
+  const W=595,H=842,M=50,CW=W-2*M,pages=[];let cur,y;
+  const fix=x=>x.replace(/(?<=[A-Za-zβ])β/g,'-'+bet).replace(/β/g,bet);
+  const map={'’':0x92,'‘':0x91,'“':0x93,'”':0x94,'…':0x85,'–':0x96,'—':0x97,'€':0x80,'•':0x95};
+  const enc=x=>[...fix(x)].map(c=>{let n=map[c]??c.charCodeAt(0);if(n>255)n=63;return(n===40||n===41||n===92)?'\\'+c:(n<32||n>126)?'\\'+n.toString(8).padStart(3,'0'):String.fromCharCode(n)}).join('');
+  const cw=(c,b)=>(/[ijl.,:;'!|]/.test(c)?.26:/[ft()\-\/]/.test(c)?.33:/[mwMW]/.test(c)?.82:/[A-Z]/.test(c)?.68:/\d/.test(c)?.556:.54)*(b?1.07:1);
+  const wd=(x,sz,b)=>[...fix(x)].reduce((a,c)=>a+cw(c,b)*sz,0);
+  const wrap=(x,sz,w,b)=>{const o=[];let ln='';for(const word of x.split(' ')){const cand=ln?ln+' '+word:word;if(ln&&wd(cand,sz,b)>w){o.push(ln);ln=word}else ln=cand}if(ln)o.push(ln);return o};
+  const C={ink:'0.23 0.04 0.14',br:'0.86 0.15 0.47',mu:'0.42 0.38 0.50',wh:'1 1 1',lt:'0.99 0.85 0.93'};
+  const txt=(x,xx,yy,f,sz,col)=>cur.push(`BT /F${f} ${sz} Tf ${C[col]} rg ${xx} ${yy} Td (${enc(x)}) Tj ET`);
+  const page=()=>{cur=[];pages.push(cur);y=H-60};
+  const need=h=>{if(y-h<60)page()};
+  page();
+  cur.push(`0.51 0.09 0.26 rg 0 ${H-100} ${W} 100 re f 0.96 0.45 0.71 rg 0 ${H-100} 14 100 re f`);
+  txt(title,M,H-52,2,17,'wh');txt(meta,M,H-72,1,10,'lt');y=H-135;
+  for(const k of blocks){
+    if(k.h){need(40);y-=8;txt(k.h,M,y,2,13,'br');y-=20}
+    if(k.p)for(const l of wrap(k.p,10.5,CW,0)){need(16);txt(l,M,y,k.i?3:(k.s?2:1),10.5,k.i?'mu':'ink');y-=15}
+    for(const b of k.b||[]){const ls=wrap(b,10.5,CW-18,0);need(15*ls.length);txt('•',M+4,y,1,10.5,'br');ls.forEach(l=>{txt(l,M+18,y,1,10.5,'ink');y-=15});y-=2}
+    y-=4}
+  const o=['','<< /Type /Catalog /Pages 2 0 R >>','','<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>','<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>','<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>'];
+  const kids=[];
+  pages.forEach((p,i)=>{const s=p.join('\n'),ci=o.length,pi=ci+1;o.push(`<< /Length ${s.length} >>\nstream\n${s}\nendstream`);o.push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${W} ${H}] /Contents ${ci} 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>`);kids.push(pi+' 0 R')});
+  o[2]=`<< /Type /Pages /Kids [${kids.join(' ')}] /Count ${pages.length} >>`;
+  let out='%PDF-1.4\n';const off=[];
+  for(let i=1;i<o.length;i++){off.push(out.length);out+=`${i} 0 obj\n${o[i]}\nendobj\n`}
+  const xr=out.length;out+=`xref\n0 ${o.length}\n0000000000 65535 f \n`+off.map(n=>String(n).padStart(10,'0')+' 00000 n \n').join('')+`trailer\n<< /Size ${o.length} /Root 1 0 R >>\nstartxref\n${xr}\n%%EOF`;
+  return new Blob([Uint8Array.from(out,c=>c.charCodeAt(0))],{type:'application/pdf'});
+}
+
+function ficheData(){
+  const f=t().fiche,sr=serie(S.g1,S.g2),p=probs(S.g1,S.g2);
+  const blocks=[{h:f.res,b:[`${t().pa} : ${disp(S.g1)}`,`${t().pb} : ${disp(S.g2)}`]},
+    {h:f.fam,b:S.par.map((g,i)=>`${t().roles[i]} : ${g==='?'?f.unk:disp(g)}`)},
+    {h:f.risk,b:CATS.filter(c=>p[c]>0).map(c=>`${t().cs[c]} : ${pct(p[c])} %`)}];
+  if(sr[0]>0)blocks.push({h:f.multi,b:sr.map((v,i)=>`${i+1} ${f.preg} : ${pct(v)} %`)});
+  if(REL[S.rel])blocks.splice(1,0,{h:f.kin,b:[t().relS[RELK.indexOf(S.rel)]].concat(REL[S.rel][0]>0?[f.kinN]:[])});
+  blocks.push({p:counsel(S.g1,S.g2)?t().cYes:t().cNo,s:1},{h:f.qs,b:t().qs},{p:t().disc,i:1});
+  return{title:f.title,meta:f.meta+new Date().toLocaleString(L==='fr'?'fr-FR':'en-GB'),blocks};
+}
+function save(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();S.fiche=1;$('#pg').style.width=((both()?1:0)+(S.quiz!==null?1:0)+1)/3*100+'%'}
+function fiche(){const d=ficheData();save(pdfFile(d.title,d.meta,d.blocks,L==='fr'?'bêta':'beta'),'fiche_consultation.pdf')}
+
+function nxt(){
+  const e=$('#next');let h=`<h2>${t().nextT}</h2>`;
+  h+=both()?`<div class="note ${counsel(S.g1,S.g2)?'warn':'ok'}">${counsel(S.g1,S.g2)?t().cYes:t().cNo}</div>`:need();
+  h+=`<h3>${t().who}</h3><p>${t().whoB}</p><details><summary>${t().qT}</summary><ul>${t().qs.map(q=>`<li>${q}</li>`).join('')}</ul></details><p class="mute">${t().dir}</p>
+  <h3>${t().fT}</h3><p class="mute">${t().fI}</p><button class="btn" id="fb" ${both()?'':'disabled'}>${t().fB}</button>
+  <h3>${t().quizT}</h3>`+t().quiz.map((q,i)=>`<div class="q"><label>${q[0]}</label><div class="o">${q[1].map((o,j)=>`<label><input type="radio" name="q${i}" value="${j}"> ${o}</label>`).join('')}</div></div>`).join('')+
+  `<button class="btn alt" id="qb">${t().quizB}</button> <b id="qr">${S.quiz!==null?t().quizR(S.quiz):''}</b>`;
+  e.innerHTML=h;$('#fb').onclick=fiche;
+  $('#qb').onclick=()=>{let s=0,all=true;t().quiz.forEach((q,i)=>{const v=document.querySelector(`input[name=q${i}]:checked`);if(!v)all=false;else if(+v.value===q[2])s++});if(all){S.quiz=s;$('#qr').textContent=t().quizR(s);$('#pg').style.width=((both()?1:0)+1+(S.fiche?1:0))/3*100+'%'}};
+}
+
+document.addEventListener('click',e=>{
+  const tb=e.target.closest('.tabs button');
+  if(tb){speechSynthesis.cancel();document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected',b===tb));document.querySelectorAll('section').forEach((s,i)=>s.classList.toggle('on',i===+tb.dataset.i))}
+  const lb=e.target.closest('.lang button');if(lb){L=lb.dataset.l;render()}
+});
+$('#g1').onchange=e=>{S.g1=e.target.value;render()};
+$('#g2').onchange=e=>{S.g2=e.target.value;render()};
+$('#rel').onchange=e=>{S.rel=e.target.value;render()};
+
+/* ===== Assistant : cadre strict, réponses préparées + IA optionnelle ===== */
+const AI_ENDPOINT='https://assistant.mariejunior564.workers.dev'; // ← collez ici l'adresse de votre Worker (voir worker.js). Vide = réponses préparées seules.
+const A={fr:{open:'💬 Assistant',title:'Assistant',m0:'Réponses préparées',m1:'IA encadrée',ph:'Votre question…',snd:'Envoyer',pd:'Informe, ne diagnostique pas et ne remplace pas un conseil génétique.',
+hi:'Bonjour ! Je réponds aux questions sur vos résultats de porteur, les risques pour les enfants et la suite à donner.',
+sug:['Quel est notre risque ?','Et si nous sommes cousins ?','Porteur, est-ce être malade ?','Qui consulter ?'],
+out:'Je ne peux répondre qu’aux questions sur la consanguinité, la drépanocytose, vos résultats de porteur et la suite à donner. Essayez par exemple :',
+urg:'En cas de forte douleur, de fièvre, de difficulté à respirer ou de toute urgence, contactez tout de suite un service d’urgence ou un médecin. Je ne peux pas donner de conseil médical.',
+safe:'Je préfère ne pas répondre à cela : seul un professionnel de santé peut vous conseiller sur ce point. Un conseiller en génétique ou un hématologue peut vous aider.',
+need:'Choisissez d’abord les résultats des deux partenaires dans l’onglet Résultats : je pourrai alors vous donner les risques de votre couple.',
+risk:d=>`Pour ${d.c}, à chaque grossesse : ${d.d}. C’est une estimation, pas une certitude. Un conseiller en génétique peut l’interpréter pour votre situation.`,
+k:{cons:'Quand deux personnes sont apparentées (par exemple cousins), elles ont reçu une partie de leurs gènes des mêmes ancêtres. Si l’une porte une variante rare d’un gène, l’autre a plus de chances de porter la même : le risque d’une maladie héréditaire pour l’enfant augmente alors, surtout pour les maladies rares. Ce n’est pas une certitude, et cela n’est la faute de personne. Voyez le bloc « Pourquoi le lien de parenté compte » (onglet Résultats). Un dépistage élargi des porteurs et un conseiller en génétique peuvent aider ; je ne recommande aucun choix familial.',carrier:'Être porteur (par exemple AS) signifie avoir un gène normal et un gène modifié. En général, on n’est pas malade : la maladie apparaît quand l’enfant reçoit un gène modifié de chaque parent.',
+same:'Oui. Chaque grossesse est un nouveau tirage au sort : avoir eu un enfant non atteint ne change pas le risque de la suivante, et avoir eu un enfant atteint non plus.',
+who:'Un conseiller en génétique ou un hématologue. Sinon, votre médecin traitant ou le service de santé de votre région peut vous orienter. Vous pouvez aussi télécharger la fiche (onglet Suite) et l’apporter à la consultation.',
+test:'Seul un test sanguin fait par un laboratoire (par exemple une électrophorèse de l’hémoglobine) confirme un génotype. Demandez à un professionnel de santé où le faire.',
+opt:'Cet outil ne recommande aucun choix : c’est une décision personnelle. Selon les pays et les centres, des options existent avant ou pendant une grossesse. Un conseiller en génétique ou un hématologue peut vous les présenter sans vous influencer.',
+care:'Je ne peux pas parler de traitement ni de médicaments : cela relève d’un médecin qui connaît la personne. Un hématologue pourra vous répondre.',
+priv:'Rien n’est enregistré ni envoyé : tout reste dans votre navigateur. Si l’assistant IA est activé, seuls les génotypes choisis et votre question sont envoyés, sans nom ni identifiant.',
+how:'Choisissez les résultats des deux partenaires (onglet Résultats), ajoutez les proches (Famille), regardez le calendrier, puis téléchargez la fiche PDF dans l’onglet Suite.',
+hi:'Bonjour ! Posez-moi une question sur vos résultats ou sur la suite à donner.'}},
+en:{open:'💬 Assistant',title:'Assistant',m0:'Prepared answers',m1:'Guarded AI',ph:'Your question…',snd:'Send',pd:'Informs only: no diagnosis, not a substitute for genetic counselling.',
+hi:'Hello! I answer questions about your carrier results, the risks for children and what to do next.',
+sug:['What is our risk?','What if we are cousins?','Is a carrier ill?','Who should we see?'],
+out:'I can only answer questions about marriage between relatives, sickle cell disease, your carrier results and next steps. For example, try:',
+urg:'For severe pain, fever, trouble breathing or any emergency, contact emergency services or a doctor right away. I cannot give medical advice.',
+safe:'I would rather not answer that: only a health professional can advise on this. A genetic counsellor or a haematologist can help.',
+need:'First pick both partners’ results in the Results tab, then I can give your couple’s risks.',
+risk:d=>`For ${d.c}, at each pregnancy: ${d.d}. This is an estimate, not a certainty. A genetic counsellor can interpret it for your situation.`,
+k:{cons:'When two people are related (for example cousins), they received part of their genes from the same ancestors. If one carries a rare gene variant, the other is more likely to carry the same one: the risk of an inherited disease for the child then goes up, especially for rare conditions. It is not a certainty, and it is nobody’s fault. See the “Why being related matters” block (Results tab). Extended carrier screening and a genetic counsellor can help; I recommend no family choice.',carrier:'Being a carrier (for example AS) means having one normal gene and one changed gene. Usually the person is not ill: the disease appears when a child receives a changed gene from each parent.',
+same:'Yes. Each pregnancy is a new draw: having had an unaffected child does not change the next risk, and neither does having had an affected one.',
+who:'A genetic counsellor or a haematologist. Otherwise your family doctor or local health service can refer you. You can also download the sheet (Next tab) and bring it to the consultation.',
+test:'Only a blood test done by a laboratory (for example haemoglobin electrophoresis) confirms a genotype. Ask a health professional where to have it done.',
+opt:'This tool recommends no choice: it is a personal decision. Depending on country and centre, options exist before or during a pregnancy. A genetic counsellor or haematologist can present them without steering you.',
+care:'I cannot discuss treatment or medicines: that is for a doctor who knows the person. A haematologist can answer you.',
+priv:'Nothing is saved or sent: everything stays in your browser. If the AI assistant is enabled, only the chosen genotypes and your question are sent, with no name or identifier.',
+how:'Pick both partners’ results (Results tab), add relatives (Family), look at the calendar, then download the PDF sheet in the Next tab.',
+hi:'Hello! Ask me about your results or next steps.'}}};
+const norm=x=>x.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const INT=[['urg',/douleur|crise|fievre|urgence|respir|saign|hopital|pain|crisis|fever|emergency|breath|bleed|hospital/],
+['opt',/avort|interromp|\bivg\b|prenatal|\bfiv\b|adopt|faut.il avoir|devons.nous|doit.on|should we|abort|\bivf\b|what should we do|que faire|choisir/],
+['care',/traitement|medicament|soigner|guerir|hydroxy|treatment|\bcure\b|medic|drug/],
+['same',/chaque grossesse|prochain|suivant|deuxieme|encore|same|next|each pregnancy|another/],
+['cons',/consang|cousin|apparent|parente|liens? de sang|mariage (entre|dans)|related|relatives? marr|inbreed|marry (a )?(relative|cousin)|kin\b/],
+['risk',/risque|probab|chance|pourcent|aura.t.il|\brisk|percent|odds|will (our|the) (child|baby)/],
+['carrier',/porteur|trait|malade|different|carrier|\bill\b|sick|difference/],
+['who',/consult|conseil|genetic|generaliste|medecin|docteur|qui voir|ou aller|counsel|doctor|who should|where/],
+['test',/\btest|depist|electroph|confirm|analyse|screen|lab/],
+['priv',/donnee|prive|enregistr|confidenti|data|privacy|saved|secret/],
+['how',/comment|utiliser|fiche|pdf|mode d.emploi|how|sheet|use/],
+['hi',/^(bonjour|salut|bonsoir|hello|hi|hey)\b/]];
+function local(q){const n=norm(q),a=A[L];let k=(INT.find(i=>i[1].test(n))||[])[0];
+  if(!k)return{k:'out',t:a.out};if(k==='urg')return{k:'urg',t:a.urg};
+  if(k==='risk'){if(!both())return{k:'in',t:a.need};const p=probs(S.g1,S.g2);return{k:'in',t:a.risk({c:`${disp(S.g1)} × ${disp(S.g2)}`,d:CATS.filter(c=>p[c]>0).map(c=>`${T[L].cs[c].toLowerCase()} ${pct(p[c])} %`).join(', ')})}}
+  return{k:'in',t:a.k[k]}}
+let aiOn=!!AI_ENDPOINT,hist=[],aL=null,aiFail=false;
+const bub=(c,x,u)=>{const d=document.createElement('div');d.className='msg '+c+(u?' urg':'');d.textContent=x;$('#am').appendChild(d);$('#am').scrollTop=1e9;return d};
+function chips(){$('#as').innerHTML=A[L].sug.map(x=>`<button type="button">${x}</button>`).join('');$('#as').querySelectorAll('button').forEach(b=>b.onclick=()=>ask(b.textContent))}
+function ui(){const a=A[L];$('#ab').textContent=a.open;$('#at').textContent=a.title;$('#amd').textContent=aiOn&&!aiFail?a.m1:a.m0;$('#aq').placeholder=a.ph;$('#asn').textContent=a.snd;$('#apd').textContent=a.pd;
+  if(aL!==L){aL=L;hist=[];$('#am').innerHTML='';bub('b',a.hi);chips()}}
+async function ask(q){q=q.trim().slice(0,400);if(!q)return;bub('u',q);$('#aq').value='';const l=local(q);let out=l;
+  if(aiOn&&l.k!=='urg'){const w=bub('b','…');let tm;try{
+    const r=await Promise.race([fetch(AI_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q,g1:S.g1,g2:S.g2,rel:S.rel,lang:L,h:hist.slice(-4)})}),new Promise((_,rej)=>{tm=setTimeout(()=>rej(new Error('timeout')),30000)})]);
+    const j=await r.json().catch(()=>({}));
+    if(!r.ok||typeof j.answer!=='string'||!j.answer||j.answer.length>4000){console.warn('[Assistant] réponse inattendue du Worker',r.status,j);throw 0}
+    out={k:j.kind==='urgent'?'urg':'in',t:j.answer};w.remove();aiFail=false}catch(e){console.warn('[Assistant] appel impossible (réseau, CORS ou délai dépassé)',e);w.remove();aiFail=true}finally{clearTimeout(tm)}ui()}
+  bub('b',out.t,out.k==='urg');hist.push({q,a:out.t});if(out.k==='out')chips()}
+$('#ab').onclick=()=>{const o=$('#ap').hidden;$('#ap').hidden=!o;$('#ab').setAttribute('aria-expanded',o);if(o)$('#aq').focus()};
+$('#ax').onclick=()=>{$('#ap').hidden=true;$('#ab').setAttribute('aria-expanded',false);speechSynthesis.cancel()};
+$('#af').onsubmit=e=>{e.preventDefault();ask($('#aq').value)};
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#ap').hidden)$('#ax').click()});
+addEventListener('pagehide',()=>speechSynthesis.cancel());
+render();
+</script>
+</body>
+</html>

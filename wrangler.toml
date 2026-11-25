@@ -1,0 +1,11 @@
+# Le nom "assistant" donne l'adresse https://assistant.<votre-sous-domaine>.workers.dev
+name = "assistant"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+
+[vars]
+ALLOWED_ORIGINS = "https://juniorb573.github.io"
+MODEL = "claude-haiku-5-5"
+RATE_LIMIT_PER_MIN = "20"
+
+# La clé d'API ne va JAMAIS ici : wrangler secret put ANTHROPIC_API_KEY
